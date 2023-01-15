@@ -73,3 +73,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "pdf-reader", "~> 2.11"
+
+gem "ruby-openai", "~> 3.0"
+
+gem "dotenv-rails", "~> 2.8", groups: [:development, :test]
