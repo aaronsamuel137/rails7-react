@@ -1,7 +1,7 @@
 class PdfParser
-  def initialize(pdf_filename, model: 'text-search-curie-doc-001')
+  def initialize(pdf_filename)
     self.pages = PDF::Reader.new(pdf_filename).pages
-    self.model = model
+    self.model = ENV['DOC_EMBEDDINGS_MODEL']
   end
 
   def write_csv
