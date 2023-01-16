@@ -4,7 +4,6 @@ import RoundedButton from "./RoundedButton";
 export default () => {
   const [question, setQuestion] = useState("What is The Minimalist Entrepreneur about?")
   const onAsk = () => {
-    console.log('asking')
     fetch('/api/v1/questions/ask', {
       method: 'POST',
       headers: {
@@ -12,10 +11,12 @@ export default () => {
         'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
       },
       body: JSON.stringify({ question })
-    }).then((response) => {
-      console.log(response)
+    }).then((response) => response.json())
+      .then((response) => {
+        console.log(response)
     })
   }
+
   return (
     <div className="max-w-lg mx-auto">
       <h1 className="font-bold text-xl text-center">Ask My Book</h1>

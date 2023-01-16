@@ -177,6 +177,7 @@ GEM
     rake (13.0.6)
     redis (4.8.0)
     regexp_parser (2.6.1)
+    resemble (1.2.0)
     rexml (3.2.5)
     ruby-openai (3.0.3)
       httparty (>= 0.18.1, < 0.22.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 4.0)
+  resemble (~> 1.2)
   ruby-openai (~> 3.0)
   selenium-webdriver
   sprockets-rails
