@@ -1,5 +1,3 @@
-require 'matrix'
-
 class PromptGenerator
   MAX_SECTION_LEN = 500
   SEPARATOR = "\n* "

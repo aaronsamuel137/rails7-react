@@ -233,6 +233,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.8)
   jbuilder
   jsbundling-rails
+  matrix (~> 0.4.2)
   pdf-reader (~> 2.11)
   pg (~> 1.1)
   puma (~> 5.0)

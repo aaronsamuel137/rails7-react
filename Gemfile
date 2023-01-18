@@ -81,3 +81,5 @@ gem "ruby-openai", "~> 3.0"
 gem "dotenv-rails", "~> 2.8", groups: [:development, :test]
 
 gem "resemble", "~> 1.2"
+
+gem "matrix", "~> 0.4.2"
