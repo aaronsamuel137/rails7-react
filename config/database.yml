@@ -83,4 +83,4 @@ production:
   <<: *default
   database: rails7_react_production
   username: rails7_react
-  password: <%= ENV["RAILS7_REACT_DATABASE_PASSWORD"] %>
+  password: <%= ENV["DATABASE_URL"] %>

@@ -93,7 +93,7 @@ export default () => {
     <div className="max-w-lg mx-auto">
       <div className="pt-10">
         <a href="https://www.amazon.com/Minimalist-Entrepreneur-Great-Founders-More/dp/0593192397" target="_blank">
-          <img className="mx-auto h-64" src="https://askmybook.com/static/book.2a513df7cb86.png" alt="The Minimalist Entrepreneur" />
+          <img className="mx-auto h-64 rounded-lg shadow-md" src="https://askmybook.com/static/book.2a513df7cb86.png" alt="The Minimalist Entrepreneur" />
         </a>
       </div>
       <h1 className="font-bold text-xl text-center mt-5">Ask My Book</h1>

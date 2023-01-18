@@ -34,6 +34,9 @@ class PromptGenerator
 
       sections.join('')
     end
+  rescue Errno::ENOENT => _e
+    puts "No book embeddings found. Make sure the file book.embeddings.csv exists."
+    '' # no csv found, generate prompt without context
   end
 
   private
