@@ -7,6 +7,11 @@ const randomInteger = (min, max) => {
 }
 
 const DEFAULT_QUESTION = 'What is The Minimalist Entrepreneur about?'
+const LUCKY_QUESTIONS = [
+  "What is a minimalist entrepreneur?",
+  "What is your definition of community?",
+  "How do I decide what kind of business I should start?"
+]
 
 export default () => {
   const [question, setQuestion] = useState(DEFAULT_QUESTION)
@@ -46,7 +51,7 @@ export default () => {
     setShowAskAnotherButton(false)
   }
 
-  const onAsk = () => {
+  const onAsk = (askedQuestion) => {
     setAsking(true)
     fetch('/api/v1/questions/ask', {
       method: 'POST',
@@ -54,7 +59,7 @@ export default () => {
         'Content-Type': 'application/json',
         'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
       },
-      body: JSON.stringify({ question })
+      body: JSON.stringify({ question: askedQuestion })
     }).then((response) => response.json())
       .then((response) => {
         setAsking(false)
@@ -64,6 +69,12 @@ export default () => {
         }, 1200)
         navigate(`/question/${response.id}`)
       })
+  }
+
+  const onFeelingLucky = () => {
+    const randomQuestion = LUCKY_QUESTIONS[~~(Math.random() * LUCKY_QUESTIONS.length)]
+    setQuestion(randomQuestion)
+    onAsk(randomQuestion)
   }
 
   const showAnswer = (message, index) => {
@@ -87,8 +98,8 @@ export default () => {
       <textarea className="w-full border rounded p-2" value={question} onChange={(e) => setQuestion(e.target.value)}/>
       {!response ? (
         <div className="text-center py-2">
-          <RoundedButton className="bg-black text-white mr-10" disabled={asking} onClick={onAsk}>{asking ? 'Asking...' : 'Ask question'}</RoundedButton>
-          <RoundedButton className="bg-gray-200 text-gray-700" disabled={asking}>I'm feeling lucky</RoundedButton>
+          <RoundedButton className="bg-black text-white mr-10" disabled={asking} onClick={() => { onAsk(question) }}>{asking ? 'Asking...' : 'Ask question'}</RoundedButton>
+          <RoundedButton className="bg-gray-200 text-gray-700" disabled={asking} onClick={onFeelingLucky}>I'm feeling lucky</RoundedButton>
         </div>
       ) : (
         <div className="py-2">

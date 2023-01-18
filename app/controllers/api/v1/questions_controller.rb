@@ -5,7 +5,6 @@ class Api::V1::QuestionsController < ApplicationController
   end
 
   def ask
-    sleep(1)
     if existing_question.present?
       existing_question.ask_count += 1
       existing_question.save!
