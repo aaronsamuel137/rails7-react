@@ -1,8 +1,11 @@
 class Api::V1::QuestionsController < ApplicationController
   def show
+    question = Question.find(params[:id])
+    render json: question.to_json
   end
 
   def ask
+    sleep(1)
     if existing_question.present?
       existing_question.ask_count += 1
       existing_question.save!
