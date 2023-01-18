@@ -66,6 +66,7 @@ export default () => {
         setResponse(response)
         setTimeout(() => {
           showAnswer(response.answer, 0)
+          window.speechSynthesis.speak(new SpeechSynthesisUtterance(response.answer))
         }, 1200)
         navigate(`/question/${response.id}`)
       })
