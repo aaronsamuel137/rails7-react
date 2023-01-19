@@ -11,3 +11,7 @@ Small app showing a basic app structure for Rails 7 with React, as well as usage
 ## Usage
 
 Run the server locally with `bin/dev`
+
+## Testing
+
+Run `rails test:all`

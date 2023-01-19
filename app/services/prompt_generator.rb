@@ -3,8 +3,9 @@ class PromptGenerator
   SEPARATOR = "\n* "
   SEPARATOR_LENGTH = 3
 
-  def initialize(query)
+  def initialize(query, csv_filename: 'book.embeddings.csv')
     self.query = query
+    self.csv_filename = csv_filename
   end
 
   def construct_prompt
@@ -33,13 +34,13 @@ class PromptGenerator
       sections.join('')
     end
   rescue Errno::ENOENT => _e
-    puts "No book embeddings found. Make sure the file book.embeddings.csv exists."
+    puts "No book embeddings found. Make sure the file #{csv_filename} exists."
     '' # no csv found, generate prompt without context
   end
 
   private
 
-  attr_accessor :query
+  attr_accessor :query, :csv_filename
 
   def header
     "Sahil Lavingia is the founder and CEO of Gumroad, and the author of the book The Minimalist Entrepreneur (also known as TME). These are questions and answers by him. Please keep your answers to three sentences maximum, and speak in complete sentences. Stop speaking once your point is made.\n\nContext that may be useful, pulled from The Minimalist Entrepreneur:\n"
@@ -68,7 +69,7 @@ class PromptGenerator
   end
 
   def page_embeddings
-    @page_embeddings ||= CSV.open('book.embeddings.csv', headers: true).to_a
+    @page_embeddings ||= CSV.open(csv_filename, headers: true).to_a
   end
 
   def closest_pages
